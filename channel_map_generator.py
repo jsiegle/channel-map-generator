@@ -42,7 +42,7 @@ with st.container():
             'enabled' : ['true'] * 5
         }
 
-        ## actual implementation:
+        ## actual implementation (still needs some work):
         #probe = get_probe(prb_manufacturer, prb_part_number)st
         #probe.wiring_to_device(hs_part_number)
         #configuration = {
