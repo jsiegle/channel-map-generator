@@ -3,7 +3,7 @@ import json
 import streamlit as st
 import pandas as pd
 
-from probeinterface import Probe, get_probe
+from probeinterface import get_probe
 
 headstages = pd.read_csv('headstages.csv', index_col=0)
 probes = pd.read_csv('probes.csv',index_col=0)
@@ -23,6 +23,7 @@ with st.container():
          'Select probe...',
          probes.index.values)
         prb_part_number = probes.loc[selected_probe].part_number
+        prb_manufacturer = probes.loc[selected_probe].manufacturer
         st.image('images/' + prb_part_number + '-01.png')
 
     with col2:
@@ -35,10 +36,19 @@ with st.container():
     with col3:
         st.markdown('<p style="font-size: 14px">Config file:</p>',unsafe_allow_html=True)
 
+        # placeholder implementation:
         configuration = {
-            'channels' : [0, 1, 2, 3, 4],
-            'enabled' : [1, 1, 1, 1, 1]
+            'mapping' : [0, 1, 2, 3, 4],
+            'enabled' : ['true'] * 5
         }
+
+        ## actual implementation:
+        #probe = get_probe(prb_manufacturer, prb_part_number)st
+        #probe.wiring_to_device(hs_part_number)
+        #configuration = {
+        #    'mapping' : probe.device_channel_indices,
+         #   'enabled' : ['true'] * len(probe.device_channel_indices)
+        #}
 
         st.download_button(label="Download",
             data=json.dumps(configuration, indent = 6),
