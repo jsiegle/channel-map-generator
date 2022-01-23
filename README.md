@@ -10,7 +10,7 @@ the channel map.
 
 The app is running at https://share.streamlit.io/jsiegle/channel-map-generator/main/channel_map_generator.py
 
-The current implementation downloads a placeholder JSON file;
+**Important note:** The current implementation just downloads a placeholder JSON file; more work is needed to make it fully functional.
 
 ## Development
 
